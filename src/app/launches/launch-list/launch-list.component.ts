@@ -15,16 +15,11 @@ export class LaunchListComponent implements OnInit {
   public launches$ = new Subject<Launch[]>();
   public isLoading = true;
 
-  public data$: Observable<LaunchAPI>;
-
   constructor(
     private launchesService: LaunchesService,
     private router: Router,
     private network: NetworkService
-  ) {
-    this.data$ = this.network.get<LaunchAPI>('https://fdo.rocketLaunch.live/json/launches/next/5');
-    this.data$.subscribe(x => console.log(x))
-  }
+  ) {}
 
   public ngOnInit(): void {
     this.launches$ = this.launchesService.launchesChanged;

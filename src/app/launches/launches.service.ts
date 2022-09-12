@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Launch } from '../models/models/launch.model';
 import { LaunchAPI } from '../models/interfaces/launch-api.interface';
 import { Subject } from 'rxjs';
+import { NetworkService } from '../shared/services/network.service';
 
 @Injectable({ providedIn: 'root' })
 export class LaunchesService {
@@ -10,11 +11,14 @@ export class LaunchesService {
 
   launchesChanged = new Subject<Launch[]>();
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    private networkService: NetworkService
+  ) {}
 
   fetchLaunches() {
     setTimeout(() => {
-      this.http
+      this.networkService
         .get<LaunchAPI>('https://fdo.rocketlaunch.live/json/launches/next/5')
         .subscribe((response) => {
           this.launches = response['result'].map(
