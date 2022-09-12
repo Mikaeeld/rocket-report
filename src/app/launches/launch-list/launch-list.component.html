@@ -1,0 +1,3 @@
+<mat-spinner *ngIf="!(launches$ | async)"></mat-spinner>
+<app-launch-item *ngFor="let launch of launches$ | async; let i = index" [index]="i" style="padding: 5px;" (click)="onClick(i)">
+</app-launch-item>
