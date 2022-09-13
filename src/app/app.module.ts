@@ -17,7 +17,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { SERVICES } from './shared/services';
-import { NetworkService } from './shared/services/network.service';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -38,7 +38,8 @@ import { NetworkService } from './shared/services/network.service';
     HttpClientModule,
     MatCardModule,
     MatButtonModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    FlexLayoutModule
   ],
   providers: [SERVICES],
   bootstrap: [AppComponent]
